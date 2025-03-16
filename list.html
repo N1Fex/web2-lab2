@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+		Список актуальных крипто
+    </title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body background="res/Background.webp" background-repeat="repeat">
+	<div>
+		<h2 align="center">Навигация:</h2>
+		<div class="menu">
+			<a href="index.html">Главная</a><br>
+			<a href="bitcoin.html">Криптовалюта Bitcoin</a><br>
+			<a href="list.html"><b>Список актуальных криптовалют</b></a>
+		</div>
+		<h2 align="center">Актуальные криптовалюты на 2024 год.</h2>
+		<p></p>
+		<details>
+			<summary>График</summary> 
+			<form>
+				<table cellspacing="5px">
+          
+					<tr>
+						<th>Значение по оси Х</th>
+						<th>Результат</th>
+					</tr>
+					<tr>
+						<td><input name="x-coord" type="radio">Наименование</td>
+						<td><input name="y-coord" type="checkbox">Цена</td>
+					</tr>
+					<tr>
+						<td><input name="x-coord" type="radio">Символ</td>
+						<td><input name="y-coord" type="checkbox">Объем</td>
+					</tr>
+					<tr>
+						<td><input name="x-coord" type="radio">Год</td>
+						<td><input name="y-coord" type="checkbox">Рыночная капитализация</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input name="y-coord" type="checkbox">% за 24 часа</td>
+					</tr>
+				</table>
+				<input type="button" value="Применить">
+				<p class="default"></p>
+			</form>
+		</details>
+		<details>
+			<summary>Фильтр</summary> 
+			<form>
+				<p class="default">Наименование: <input type="text" id="name-input"></p>
+				<p class="default">Год с <input type="text" id="year-start"> до <input type="text" id="year-end"></p>
+				<p class="default">Цена от <input type="text" id="price-start"> до <input type="text" id="price-end"></p>
+				<input type="button" value="Найти" onclick="applyFilter()">
+				<p class="default"></p>
+			</form>
+		</details>
+		<details>
+			<summary>Сортировка</summary>
+			<form id="sort">
+				<p class="default"></p>
+				<p class="default">
+					Первый уровень:
+					<select id="first-level">
+					</select>
+					по убыванию? <input type="checkbox" id="first-level-desc">
+				</p>
+				<p class="default">
+					Второй уровень:
+					<select id="second-level">
+					</select>
+					по убыванию? <input type="checkbox" id="second-level-desc">
+				</p>
+				<p class="default">
+					Третий уровень:
+					<select id="third-level">
+					</select>
+					по убыванию? <input type="checkbox" id="third-level-desc">
+				</p>
+				<p class="default"></p>
+				<input type="button" value="Применить" onclick="applySort()">
+				<p class="default"></p>
+			</form>
+		</details>
+
+		<p></p>
+		<table border="1px" cellspacing="4px" cellpadding="3px" id="tableCrypto">
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th>Символ</th>
+          <th>Год</th>
+          <th>Рыночная капитализация</th>
+          <th>Цена</th>
+          <th>Циркурирующие предложения</th>
+          <th>Объем(24 часа)</th>
+          <th>% за 24 часа</th>
+        </tr>
+      </thead>
+      <tbody>
+				<tr>
+  			  <td>Bitcoin</td>
+  			  <td>BTC</td>
+  			  <td>2014</td>
+  			  <td>₽129,861,691,081,863</td>
+  			  <td>₽6,569,045.38</td>
+  			  <td>19 768 731 BTC</td>
+  			  <td>$36 873 629 660	</td>
+  			  <td>0,48%</td>
+        </tr>
+        <tr>
+  			  <td>Ethereum</td>
+  			  <td>ETH</td>
+  			  <td>2023</td>
+  			  <td>₽30,923,183,094,653</td>
+  			  <td>₽256,864.03</td>
+  			  <td>120 387 363 ETH *</td>
+  			  <td>$16 969 287 292	</td>
+  			  <td>0,74%</td>
+        </tr>
+        <tr>
+  			  <td>Tether USDt</td>
+  			  <td>USDT</td>
+  			  <td>2011</td>
+  			  <td>₽11,694,956,240,894</td>
+  			  <td>₽97.48</td>
+  			  <td>119 973 576 282 USDT *</td>
+  			  <td>$60 999 021 402	</td>
+  			  <td>-0,01%</td>
+        </tr>
+        <tr>
+  			  <td>BNB</td>
+  			  <td>BNB</td>
+  			  <td>2023</td>
+  			  <td>₽8,567,876,695,699</td>
+  			  <td>₽58,711.54</td>
+  			  <td>145 931 721 BNB *</td>
+  			  <td>$1 937 416 122	</td>
+  			  <td>1,76%</td>
+        </tr>
+        <tr>
+  			  <td>Solana</td>
+  			  <td>SOL</td>
+  			  <td>2012</td>
+  			  <td>₽7,030,219,875,380</td>
+  			  <td>₽14,962.65</td>
+  			  <td>469 851 246 SOL *</td>
+  			  <td>$2 332 689 365	</td>
+  			  <td>-0,38%</td>
+        </tr>
+        <tr>
+  			  <td>USDC</td>
+  			  <td>USDC</td>
+  			  <td>2011</td>
+  			  <td>₽3,393,838,391,966</td>
+  			  <td>₽97.49</td>
+  			  <td>34 811 964 931 USDC *</td>
+  			  <td>$6 546 938 834	</td>
+  			  <td>-0,01%</td>
+        </tr>
+        <tr>
+  			  <td>XRP</td>
+  			  <td>XRP</td>
+  			  <td>2008</td>
+  			  <td>₽3,103,888,487,482</td>
+  			  <td>₽54.80</td>
+  			  <td>56 645 058 199 XRP *</td>
+  			  <td>$1 245 824 681	</td>
+  			  <td>3,94%</td>
+			</tr>
+			<tr>
+  			  <td>Dogecoin</td>
+  			  <td>DOGE</td>
+  			  <td>2008</td>
+  			  <td>₽1,772,433,914,709</td>
+  			  <td>₽12.11</td>
+  			  <td>146 399 666 384 DOGE</td>
+  			  <td>$2 284 767 544	</td>
+  			  <td>5,84%</td>
+			</tr>
+			<tr>
+  			  <td>TRON</td>
+  			  <td>TRX</td>
+  			  <td>2019</td>
+  			  <td>₽1,349,662,868,121</td>
+  			  <td>₽15.60</td>
+  			  <td>86 531 028 693 TRX *</td>
+  			  <td>$299 195 988	</td>
+  			  <td>0,51%</td>
+			</tr>
+			<tr>
+  			  <td>Toncoin</td>
+  			  <td>TON</td>
+  			  <td>2012</td>
+  			  <td>₽1,289,614,269,002</td>
+  			  <td>₽507.88</td>
+  			  <td>2 539 203 201 TON *</td>
+  			  <td>$161 552 447	</td>
+  			  <td>0,07%</td>
+			</tr>
+			<tr>
+  			  <td>Cardano</td>
+  			  <td>ADA</td>
+  			  <td>2018</td>
+  			  <td>₽1,202,645,062,764</td>
+  			  <td>₽34.39</td>
+  			  <td>34 974 248 104 ADA *</td>
+  			  <td>$268 632 175	</td>
+  			  <td>-0,63%</td>
+			</tr>
+			<tr>
+  			  <td>Avalanche</td>
+  			  <td>AVAX</td>
+  			  <td>2019</td>
+  			  <td>₽1,103,699,193,892</td>
+  			  <td>₽2,713.77</td>
+  			  <td>406 702 833 AVAX *</td>
+  			  <td>$314 178 303	</td>
+  			  <td>0,44%</td>
+			</tr>
+			<tr>
+  			  <td>Shiba Inu</td>
+  			  <td>SHIB</td>
+  			  <td>2009</td>
+  			  <td>₽1,050,444,750,900</td>
+  			  <td>₽0.001783</td>
+  			  <td>589 267 122 310 732 SHIB *</td>
+  			  <td>$572 039 534	</td>
+  			  <td>0,70%</td>
+			</tr>
+			<tr>
+  			  <td>Bitcoin Cash</td>
+  			  <td>BCH</td>
+  			  <td>2011</td>
+  			  <td>₽702,300,887,608</td>
+  			  <td>₽35,514.06</td>
+  			  <td>19 775 291 BCH</td>
+  			  <td>$362 432 680	</td>
+  			  <td>1,42%</td>
+			</tr>
+			<tr>
+  			  <td>Chainlink</td>
+  			  <td>LINK</td>
+  			  <td>2021</td>
+  			  <td>₽687,162,907,277</td>
+  			  <td>₽1,096.22</td>
+  			  <td>626 849 970 LINK *</td>
+  			  <td>$221 605 212	</td>
+  			  <td>-0,13%</td>
+			</tr>
+			<tr>
+  			  <td>Polkadot</td>
+  			  <td>DOT</td>
+  			  <td>2018</td>
+  			  <td>₽632,782,619,300</td>
+  			  <td>₽419.95</td>
+  			  <td>1 506 806 205 DOT *</td>
+  			  <td>$113 555 084	</td>
+  			  <td>-1,19%</td>
+			</tr>
+			<tr>
+  			  <td>NEAR Protocol</td>
+  			  <td>NEAR</td>
+  			  <td>2013</td>
+  			  <td>₽585,295,142,254</td>
+  			  <td>₽481.74</td>
+  			  <td>1 214 967 546 NEAR *</td>
+  			  <td>$297 047 102	</td>
+  			  <td>-1,70%</td>
+			</tr>
+			<tr>
+  			  <td>Sui</td>
+  			  <td>SUI</td>
+  			  <td>2022</td>
+  			  <td>₽575,903,795,518</td>
+  			  <td>₽208.37</td>
+  			  <td>2 763 841 373 SUI *</td>
+  			  <td>$932 568 929	</td>
+  			  <td>4,62%</td>
+			</tr>
+			<tr>
+  			  <td>UNUS SED LEO</td>
+  			  <td>LEO</td>
+  			  <td>2013</td>
+  			  <td>₽550,898,146,005</td>
+  			  <td>₽595.42</td>
+  			  <td>925 218 990 LEO *</td>
+  			  <td>$10 110 440	</td>
+  			  <td>-0,02%</td>
+			</tr>
+			<tr>
+  			  <td>Dai</td>
+  			  <td>DAI</td>
+  			  <td>2021</td>
+  			  <td>₽523,021,643,194</td>
+  			  <td>₽97.48</td>
+  			  <td>5 365 382 703 DAI *</td>
+  			  <td>$82 689 106	</td>
+  			  <td>-0,02%</td>
+			</tr>
+			<tr>
+  			  <td>Litecoin</td>
+  			  <td>LTC</td>
+  			  <td>2019</td>
+  			  <td>₽518,871,319,897</td>
+  			  <td>₽6,909.84</td>
+  			  <td>75 091 656 LTC</td>
+  			  <td>$392 766 956	</td>
+  			  <td>-0,80%</td>
+			</tr>
+			<tr>
+  			  <td>Aptos</td>
+  			  <td>APT</td>
+  			  <td>2023</td>
+  			  <td>₽510,992,596,717</td>
+  			  <td>₽990.49</td>
+  			  <td>515 899 024 APT *</td>
+  			  <td>$284 365 814	</td>
+  			  <td>-1,00%</td>
+			</tr>
+			<tr>
+  			  <td>Uniswap</td>
+  			  <td>UNI</td>
+  			  <td>2022</td>
+  			  <td>₽445,042,207,858</td>
+  			  <td>₽741.37</td>
+  			  <td>600 294 744 UNI *</td>
+  			  <td>$143 959 176	</td>
+  			  <td>-3,86%</td>
+			</tr>
+			<tr>
+  			  <td>Pepe</td>
+  			  <td>PEPE</td>
+  			  <td>2022</td>
+  			  <td>₽425,846,455,629</td>
+  			  <td>₽0.001012</td>
+  			  <td>420 689 899 999 995 PEPE *</td>
+  			  <td>$896 308 516	</td>
+  			  <td>0,35%</td>
+			</tr>
+			<tr>
+  			  <td>Bittensor</td>
+  			  <td>TAO</td>
+  			  <td>2015</td>
+  			  <td>₽415,236,021,654</td>
+  			  <td>₽56,257.91</td>
+  			  <td>7 380 936 TAO *</td>
+  			  <td>$156 950 111	</td>
+  			  <td>-7,52%</td>
+			</tr>
+			<tr>
+  			  <td>Internet Computer</td>
+  			  <td>ICP</td>
+  			  <td>2013</td>
+  			  <td>₽363,479,452,532</td>
+  			  <td>₽769.16</td>
+  			  <td>472 565 633 ICP *</td>
+  			  <td>$66 363 827	</td>
+  			  <td>-1,49%</td>
+			</tr>
+			<tr>
+  			  <td>Artificial Superintelligence Alliance</td>
+  			  <td>FET</td>
+  			  <td>2020</td>
+  			  <td>₽346,339,224,622</td>
+  			  <td>₽137.44</td>
+  			  <td>2 520 000 000 FET *</td>
+  			  <td>$134 166 540	</td>
+  			  <td>-3,62%</td>
+			</tr>
+			<tr>
+  			  <td>Kaspa</td>
+  			  <td>KAS</td>
+  			  <td>2009</td>
+  			  <td>₽312,272,390,071</td>
+  			  <td>₽12.53</td>
+  			  <td>24 931 778 828 KAS</td>
+  			  <td>$33 197 864	</td>
+  			  <td>-3,60%</td>
+			</tr>
+			<tr>
+  			  <td>Monero</td>
+  			  <td>XMR</td>
+  			  <td>2015</td>
+  			  <td>₽284,525,422,368</td>
+  			  <td>₽15,424.15</td>
+  			  <td>18 446 744 XMR</td>
+  			  <td>$63 300 008	</td>
+  			  <td>2,86%</td>
+			</tr>
+			<tr>
+  			  <td>Ethereum Classic</td>
+  			  <td>ETC</td>
+  			  <td>2015</td>
+  			  <td>₽282,558,496,475</td>
+  			  <td>₽1,894.21</td>
+  			  <td>149 169 331 ETC</td>
+  			  <td>$98 108 093	</td>
+  			  <td>0,32%</td>
+			</tr>
+			<tr>
+  			  <td>Stellar</td>
+  			  <td>XLM</td>
+  			  <td>2020</td>
+  			  <td>₽279,444,603,921</td>
+  			  <td>₽9.40</td>
+  			  <td>29 714 440 696 XLM *</td>
+  			  <td>$62 379 121	</td>
+  			  <td>3,80%</td>
+			</tr>
+			<tr>
+  			  <td>First Digital USD</td>
+  			  <td>FDUSD</td>
+  			  <td>2022</td>
+  			  <td>₽277,437,576,047</td>
+  			  <td>₽97.42</td>
+  			  <td>2 847 807 369 FDUSD *</td>
+  			  <td>$5 439 980 093	</td>
+  			  <td>0,04%</td>
+			</tr>
+			<tr>
+  			  <td>POL (ex-MATIC)</td>
+  			  <td>POL</td>
+  			  <td>2014</td>
+  			  <td>₽273,236,222,017</td>
+  			  <td>₽36.06</td>
+  			  <td>7 577 568 212 POL *</td>
+  			  <td>$65 254 333	</td>
+  			  <td>0,03%</td>
+			</tr>
+			<tr>
+  			  <td>Render</td>
+  			  <td>RENDER</td>
+  			  <td>2014</td>
+  			  <td>₽266,849,486,529</td>
+  			  <td>₽515.46</td>
+  			  <td>517 690 747 RENDER *</td>
+  			  <td>$210 478 217	</td>
+  			  <td>-3,79%</td>
+			</tr>
+			<tr>
+  			  <td>Stacks</td>
+  			  <td>STX</td>
+  			  <td>2019</td>
+  			  <td>₽265,352,562,846</td>
+  			  <td>₽177.66</td>
+  			  <td>1 493 634 921 STX</td>
+  			  <td>$115 911 934	</td>
+  			  <td>-0,35%</td>
+			</tr>
+			<tr>
+  			  <td>dogwifhat</td>
+  			  <td>WIF</td>
+  			  <td>2009</td>
+  			  <td>₽256,762,627,504</td>
+  			  <td>₽257.06</td>
+  			  <td>998 845 374 WIF *</td>
+  			  <td>$498 546 164	</td>
+  			  <td>1,54%</td>
+			</tr>
+			<tr>
+  			  <td>Immutable</td>
+  			  <td>IMX</td>
+  			  <td>2023</td>
+  			  <td>₽245,096,205,318</td>
+  			  <td>₽149.65</td>
+  			  <td>1 637 774 045 IMX *</td>
+  			  <td>$38 625 717	</td>
+  			  <td>-2,08%</td>
+			</tr>
+			<tr>
+  			  <td>OKB</td>
+  			  <td>OKB</td>
+  			  <td>2010</td>
+  			  <td>₽241,116,031,267</td>
+  			  <td>₽4,018.60</td>
+  			  <td>60 000 000 OKB *</td>
+  			  <td>$2 721 853	</td>
+  			  <td>-0,25%</td>
+			</tr>
+			<tr>
+  			  <td>Aave</td>
+  			  <td>AAVE</td>
+  			  <td>2013</td>
+  			  <td>₽227,786,063,834</td>
+  			  <td>₽15,231.01</td>
+  			  <td>14 955 418 AAVE *</td>
+  			  <td>$155 147 273	</td>
+  			  <td>0,46%</td>
+			</tr>
+			<tr>
+  			  <td>Filecoin</td>
+  			  <td>FIL</td>
+  			  <td>2010</td>
+  			  <td>₽214,896,610,417</td>
+  			  <td>₽362.83</td>
+  			  <td>592 271 896 FIL</td>
+  			  <td>$99 310 489	</td>
+  			  <td>-1,60%</td>
+			</tr>
+			<tr>
+  			  <td>Optimism</td>
+  			  <td>OP</td>
+  			  <td>2023</td>
+  			  <td>₽211,630,035,448</td>
+  			  <td>₽168.62</td>
+  			  <td>1 255 070 491 OP *</td>
+  			  <td>$160 802 796	</td>
+  			  <td>-0,28%</td>
+			</tr>
+			<tr>
+  			  <td>Fantom</td>
+  			  <td>FTM</td>
+  			  <td>2008</td>
+  			  <td>₽208,901,515,117</td>
+  			  <td>₽74.51</td>
+  			  <td>2 803 634 836 FTM *</td>
+  			  <td>$196 067 758	</td>
+  			  <td>0,55%</td>
+			</tr>
+			<tr>
+  			  <td>Mantle</td>
+  			  <td>MNT</td>
+  			  <td>2008</td>
+  			  <td>₽205,354,981,806</td>
+  			  <td>₽60.99</td>
+  			  <td>3 366 841 708 MNT *</td>
+  			  <td>$70 390 431	</td>
+  			  <td>0,49%</td>
+			</tr>
+			<tr>
+  			  <td>Cronos</td>
+  			  <td>CRO</td>
+  			  <td>2009</td>
+  			  <td>₽204,967,965,832</td>
+  			  <td>₽7.71</td>
+  			  <td>26 571 560 696 CRO *</td>
+  			  <td>$6 661 978	</td>
+  			  <td>1,68%</td>
+			</tr>
+			<tr>
+  			  <td>Injective</td>
+  			  <td>INJ</td>
+  			  <td>2022</td>
+  			  <td>₽199,026,397,261</td>
+  			  <td>₽2,037.16</td>
+  			  <td>97 698 022 INJ *</td>
+  			  <td>$75 874 547	</td>
+  			  <td>-0,72%</td>
+			</tr>
+			<tr>
+  			  <td>Arbitrum</td>
+  			  <td>ARB</td>
+  			  <td>2019</td>
+  			  <td>₽196,771,486,288</td>
+  			  <td>₽54.40</td>
+  			  <td>3 617 088 312 ARB *</td>
+  			  <td>$271 347 316	</td>
+  			  <td>-2,92%</td>
+			</tr>
+			<tr>
+  			  <td>Hedera</td>
+  			  <td>HBAR</td>
+  			  <td>2018</td>
+  			  <td>₽193,192,276,920</td>
+  			  <td>₽5.13</td>
+  			  <td>37 665 440 794 HBAR *</td>
+  			  <td>$57 082 714	</td>
+  			  <td>-4,99%</td>
+			</tr>
+			<tr>
+  			  <td>VeChain</td>
+  			  <td>VET</td>
+  			  <td>2012</td>
+  			  <td>₽180,627,695,877</td>
+  			  <td>₽2.23</td>
+  			  <td>80 985 041 177 VET *</td>
+  			  <td>$28 559 688	</td>
+  			  <td>-1,95%</td>
+			</tr>
+			<tr>
+  			  <td>Bonk</td>
+  			  <td>BONK</td>
+  			  <td>2022</td>
+  			  <td>₽174,948,753,962</td>
+  			  <td>₽0.002361</td>
+  			  <td>74 087 724 727 461 BONK *</td>
+  			  <td>$370 984 148	</td>
+  			  <td>8,06%</td>
+			</tr>
+			<tr>
+  			  <td>Cosmos</td>
+  			  <td>ATOM</td>
+  			  <td>2017</td>
+  			  <td>₽168,435,291,277</td>
+  			  <td>₽430.85</td>
+  			  <td>390 934 204 ATOM *</td>
+  			  <td>$80 109 406	</td>
+  			  <td>-0,70%</td>
+			</tr>
+			<tr>
+  			  <td>THORChain</td>
+  			  <td>RUNE</td>
+  			  <td>2009</td>
+  			  <td>₽166,093,248,925</td>
+  			  <td>₽492.45</td>
+  			  <td>337 282 001 RUNE *</td>
+  			  <td>$197 880 614	</td>
+  			  <td>-2,37%</td>
+			</tr>
+			<tr>
+  			  <td>Sei</td>
+  			  <td>SEI</td>
+  			  <td>2013</td>
+  			  <td>₽162,934,193,860</td>
+  			  <td>₽43.45</td>
+  			  <td>3 749 722 222 SEI *</td>
+  			  <td>$176 815 790	</td>
+  			  <td>-1,24%</td>
+			</tr>
+			<tr>
+  			  <td>The Graph</td>
+  			  <td>GRT</td>
+  			  <td>2013</td>
+  			  <td>₽155,235,878,225</td>
+  			  <td>₽16.26</td>
+  			  <td>9 548 531 509 GRT *</td>
+  			  <td>$93 273 088	</td>
+  			  <td>-3,38%</td>
+			</tr>
+			<tr>
+  			  <td>Bitget Token</td>
+  			  <td>BGB</td>
+  			  <td>2023</td>
+  			  <td>₽151,478,005,817</td>
+  			  <td>₽108.20</td>
+  			  <td>1 400 000 000 BGB *</td>
+  			  <td>$28 457 448	</td>
+  			  <td>-0,07%</td>
+			</tr>
+			<tr>
+  			  <td>FLOKI</td>
+  			  <td>FLOKI</td>
+  			  <td>2010</td>
+  			  <td>₽137,291,916,060</td>
+  			  <td>₽0.0143</td>
+  			  <td>9 599 115 287 779 FLOKI *</td>
+  			  <td>$226 391 621	</td>
+  			  <td>1,36%</td>
+			</tr>
+			<tr>
+  			  <td>MANTRA</td>
+  			  <td>OM</td>
+  			  <td>2013</td>
+  			  <td>₽128,021,409,690</td>
+  			  <td>₽150.71</td>
+  			  <td>849 473 306 OM *</td>
+  			  <td>$59 488 639	</td>
+  			  <td>-0,96%</td>
+			</tr>
+			<tr>
+  			  <td>Theta Network</td>
+  			  <td>THETA</td>
+  			  <td>2016</td>
+  			  <td>₽125,447,695,828</td>
+  			  <td>₽125.45</td>
+  			  <td>1 000 000 000 THETA *</td>
+  			  <td>$23 196 527	</td>
+  			  <td>-2,38%</td>
+			</tr>
+      </tbody>
+		</table>
+	</div>
+	<script src="program.js"></script>
+</body>

@@ -1,0 +1,64 @@
+
+.error {
+	border: thin red solid;
+}
+
+div {
+	margin: 10px auto;
+	width: 75%;
+	background: LightGrey;
+	border: solid medium black;
+	padding: 10px 20px;
+}
+
+.menu {
+	width:50%;
+	background: white;
+	border: dashed 4px navy;
+}
+
+div.gallery-container {
+	width: 80%;
+	margin: 10px auto;
+	margin-bottom: 30px;
+	border: none;
+	padding: 5px 5px;
+	overflow: hidden;
+}
+
+h2 {
+	margin: 0px 100px;
+	align: justify;
+}
+
+p {
+	text-indent: 4em;
+	font-size: 20px;
+}
+
+p.default {
+	text-indent: 0;
+	font-size: 16px;
+}
+
+.filter {
+	
+}
+
+.gallery {
+	float: left;
+	padding: 0px 0px;
+	height: 200px;
+	margin: 1px 1px;
+}
+
+ul {
+	margin-left: 4em;
+	font-size: 20px;
+	font-style: italic;
+}
+.float-left {
+	float: left;
+	margin-left: 100px;
+	margin-right: 20px;
+}
