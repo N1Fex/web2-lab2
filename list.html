@@ -5,7 +5,7 @@
     <title>
 		Список актуальных крипто
     </title>
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body background="res/Background.webp" background-repeat="repeat">
 	<div>
@@ -54,6 +54,7 @@
 				<p class="default">Год с <input type="text" id="year-start"> до <input type="text" id="year-end"></p>
 				<p class="default">Цена от <input type="text" id="price-start"> до <input type="text" id="price-end"></p>
 				<input type="button" value="Найти" onclick="applyFilter()">
+				<input type="reset" value="Очистить">
 				<p class="default"></p>
 			</form>
 		</details>
@@ -80,7 +81,8 @@
 					по убыванию? <input type="checkbox" id="third-level-desc">
 				</p>
 				<p class="default"></p>
-				<input type="button" value="Применить" onclick="applySort()">
+				<input type="button" value="Применить" onclick="sortTable('tableCrypto', this.form)">
+				<input type="button" value="Очистить" onclick="resetSortForm(this.form)">
 				<p class="default"></p>
 			</form>
 		</details>
@@ -673,5 +675,6 @@
       </tbody>
 		</table>
 	</div>
-	<script src="program.js"></script>
+	<script src="js/program.js"></script>
+	<script src="js/sort.js"></script>
 </body>
